@@ -1,0 +1,19 @@
+{% extends 'base_new.html' %}
+
+{% block heading %}
+Tampering features
+{% endblock %}
+
+{% block content %}
+    <div class=".page-section">
+        <h1>Feature rules for sqlite3 files</h1>
+        {% for feature in features %}
+        <h3>ID: {{ feature['ID'] }}</h3>
+        <div class=".page-section">
+            <p> Created: {{feature['created']}}</p>
+            <p> {{feature['description']}}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
