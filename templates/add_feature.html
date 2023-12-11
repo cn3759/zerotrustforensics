@@ -5,6 +5,17 @@ Add a feature
 {% endblock %}
 
 {% block content %}
-    <p>Here's where we add a rule lads...</p>
+<h1 xmlns="http://www.w3.org/1999/html">Add a new feature</h1>
+<form method="post">
+    <div class="form-group">
+        <label for="description"></label>
+        <textarea name="description" placeholder="Describe the feature"
+                  class="form-control">{{ request.form['description'] }}</textarea>
+    </div><br>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+
 
 {% endblock %}

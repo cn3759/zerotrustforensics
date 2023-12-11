@@ -1,5 +1,5 @@
 import sqlite3
-from flask import Flask, render_template
+from flask import Flask, render_template, request, url_for, redirect
 from werkzeug.exceptions import abort
 
 app = Flask(__name__)
@@ -36,8 +36,12 @@ def tampering_features():
     conn.close()
     return render_template('tampering_features.html', features=features)
 
-@app.route('/add_feature')
+@app.route('/add_feature', methods=('GET', 'POST'))
 def add_feature():
+    if request.method == 'POST':
+        description = request.form['description']
+        print(description)
+        return redirect(url_for('add_feature'))
     return render_template('add_feature.html')
 
 @app.route('/<int:feature_id>')
