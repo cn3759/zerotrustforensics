@@ -8,7 +8,7 @@ app = Flask(__name__)
 ids = ['AT-1', 'AT-2', 'AB-1', 'AB-2', 'AB-3', 'AB-4']
 
 def get_db_connection():
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect('database_orig.db')
     conn.row_factory = sqlite3.Row
     return conn
 
@@ -42,7 +42,9 @@ def tampering_features():
 @app.route('/add_feature', methods=('GET', 'POST'))
 def add_feature():
     if request.method == 'POST':
+        print(request.form)
         description = request.form['description']
+        reference = request.form['reference']
         feature_map = {}
         for id in ids:
             try:
@@ -51,7 +53,10 @@ def add_feature():
             except:
                 feature_map[id] = 0
         conn = get_db_connection()
-        conn.execute('INSERT INTO features (created, Description, "AT-1", "AT-2", "AB-1", "AB-2", "AB-3", "AB-4") VALUES (?, ?, ?, ?, ?, ?, ?, ?)', (datetime.datetime.now(), description, feature_map['AT-1'], feature_map['AT-2'], feature_map['AB-1'], feature_map['AB-2'], feature_map['AB-3'], feature_map['AB-4']))
+        conn.execute('INSERT INTO features (created, Description, Reference, "AT-1", "AT-2", "AB-1", "AB-2", "AB-3", '
+                     '"AB-4") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', (datetime.datetime.now(), description,
+                                                                 reference, feature_map['AT-1'], feature_map['AT-2'],
+        feature_map['AB-1'], feature_map['AB-2'], feature_map['AB-3'], feature_map['AB-4']))
         conn.commit()
         conn.close()
         return redirect(url_for('tampering_features'))
