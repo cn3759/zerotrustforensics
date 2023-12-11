@@ -1,8 +1,11 @@
+import datetime
 import sqlite3
 from flask import Flask, render_template, request, url_for, redirect
 from werkzeug.exceptions import abort
 
 app = Flask(__name__)
+
+ids = ['AT-1', 'AT-2', 'AB-1', 'AB-2', 'AB-3', 'AB-4']
 
 def get_db_connection():
     conn = sqlite3.connect('database.db')
@@ -32,7 +35,7 @@ def tampering():
 @app.route('/tampering_features')
 def tampering_features():
     conn = get_db_connection()
-    features = conn.execute('SELECT * from features').fetchall()
+    features = conn.execute('SELECT * from features ORDER by ID DESC').fetchall()
     conn.close()
     return render_template('tampering_features.html', features=features)
 
@@ -40,8 +43,18 @@ def tampering_features():
 def add_feature():
     if request.method == 'POST':
         description = request.form['description']
-        print(description)
-        return redirect(url_for('add_feature'))
+        feature_map = {}
+        for id in ids:
+            try:
+                if request.form[id]:
+                    feature_map[id] = 1
+            except:
+                feature_map[id] = 0
+        conn = get_db_connection()
+        conn.execute('INSERT INTO features (created, Description, "AT-1", "AT-2", "AB-1", "AB-2", "AB-3", "AB-4") VALUES (?, ?, ?, ?, ?, ?, ?, ?)', (datetime.datetime.now(), description, feature_map['AT-1'], feature_map['AT-2'], feature_map['AB-1'], feature_map['AB-2'], feature_map['AB-3'], feature_map['AB-4']))
+        conn.commit()
+        conn.close()
+        return redirect(url_for('tampering_features'))
     return render_template('add_feature.html')
 
 @app.route('/<int:feature_id>')
