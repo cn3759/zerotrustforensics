@@ -5,6 +5,137 @@ Tampering
 {% endblock %}
 
 {% block content %}
-Coming soon -  a fully featured model of digital artefact tampering based on TLA+. <br><br> This is not yet
-published.
+<p>
+    We are currently in the process of submitting a paper which describes a means by which tampering can be modelled
+    as an action. If and when this work is published, we will provide a link here. We don't attempt to try and
+    provide a comprehensive overview of it in this format, you need to read the paper when it is eventually
+    available. However, there is some information which is often too verbose to include in such publications which
+    have space limitations and so we provide a reference resource below.
+</p>
+<p>
+    The first of these is a table which outlines two things for the 14 types of tampering we identify and define in our
+    model. First, it shows the difference in a system execution between if the tampering occurs and if it doesn't.
+    Seocndly, it shows the knowledge an investigator would need regarding that system in order to detect this.
+</p>
+<table>
+    <tr>
+        <th>Type of tampering action <em>t</em></th>
+        <th>Difference between 𝜛 and 𝜛'</th>
+        <th>Knowledge required</th>
+    </tr>
+    <tr>
+        <td>Invisible complete artefact destruction (ICAD)</td>
+        <td>None</td>
+        <td>N/A</td>
+    </tr>
+    <tr>
+        <td>Visible complete artefact destruction (VCAD)</td>
+        <td>Elements of δt in the artefact set</td>
+        <td>Elements of δt</td>
+    </tr>
+    <tr>
+        <td>Invisible incomplete artefact destruction (IIAD)</td>
+        <td>Elements of δa in artefact set</td>
+        <td>Elements of δa which appear in artefact set out of place (i.e. without the whole of δa)</td>
+    </tr>
+    <tr>
+        <td>Visible incomplete artefact destruction (VIAD)</td>
+        <td>Elements of δt in the artefact set<br>OR<br>Elements of δa in artefact set</td>
+        <td>Elements of δt <br>OR<br>Elements of δa which appear in artefact set out of place (i.e. without the whole of δa)</td>
+    </tr>
+    <tr>
+        <td>Invisible complete artefact source elimination (ICASE)</td>
+        <td>𝘈s̅ |𝜛 > |𝘈s̅ |𝜛'</td>
+        <td>Whether |𝘈s̅ | is within expected bounds for a given execution</td>
+    </tr>
+    <tr>
+        <td>Visible complete artefact source elimination (VCASE)</td>
+        <td>Elements of δt in the artefact set<br>OR<br>𝘈s̅ |𝜛 > |𝘈s̅ |𝜛'</td>
+        <td>Elements of δt <br>OR<br>Whether |𝘈s̅ | is within expected bounds for a given execution</td>
+    </tr>
+    <tr>
+        <td>Invisible incomplete artefact source elimination (IIASE)</td>
+        <td>Elements of δa in the artefact set<br>OR<br>𝘈s̅ |𝜛 > |𝘈s̅ |𝜛'</td>
+        <td>Elements of δa , especially those which occur out of place (i.e. without the whole of δa)
+ <br>OR<br>Whether |𝘈s̅ | is within expected bounds for a given execution</td>
+    </tr>
+    <tr>
+        <td>Visible incomplete artefact source elimination (VIASE)</td>
+        <td>Elements of δt in the artefact set<br>OR<br>𝘈Elements of δa in the artefact set<br>OR<br>𝘈s̅ |𝜛 > |𝘈s̅ |𝜛'</td>
+        <td>Elements of δt<br>OR<br>Elements of δa , especially those which occur out of place (i.e. without the
+            whole of δa)
+ <br>OR<br>Whether |𝘈s̅ | is within expected bounds for a given execution</td>
+    </tr>
+    <tr>
+        <td>Artefact hiding (AH)</td>
+        <td>Artefact set has been transformed by 𝛳</td>
+        <td>How 𝛳 behaves such that the investigator can distinguish whether 𝛳 has likely been applied to the artefact set<br>OR<br>Whether artefacts are constructed correctly in the artefact set</td>
+    </tr>
+    <tr>
+        <td>Artefact corruption (AC)</td>
+        <td>Artefact set has been transformed by 𝛳 and as a result, one or more elements of the artefact are not properly constructed</td>
+        <td>How 𝛳 behaves such that the investigator can distinguish whether 𝛳 has likely been applied to the artefact set<br>OR<br>Whether artefacts are constructed correctly in the artefact set</td>
+    </tr>
+    <tr>
+        <td>Invisible complete artefact counterfeiting (ICAC)</td>
+        <td>Elements of δa occur in implausible locations<br>OR<br>Elements of δa not correctly formed</td>
+        <td>How system should behave when δa is plausible<br>OR<br>Whether artefacts are constructed correctly in the artefact set</td>
+    </tr>
+    <tr>
+        <td>Visible complete artefact counterfeiting (VCAC)</td>
+        <td>Elements of δt in the artefact set<br>OR<br>Elements of δa occur in implausible locations<br>OR
+            <br>Elements of δa not correctly formed</td>
+        <td>Elements of δt<br>OR<br>How system should behave when δa is plausible<br>OR<br>Whether artefacts are
+            constructed correctly in the artefact set</td>
+    </tr>
+    <tr>
+        <td>Invisible incomplete artefact counterfeiting (IIAC)</td>
+        <td>Elements of δa occur in implausible locations<br>OR
+            <br>Elements of δa not correctly formed<br>OR<br>Not all elements of δa are present in the artefact set</td>
+        <td>How system should behave when δa is plausible<br>OR<br>Whether artefacts are
+            constructed correctly in the artefact set<br>OR<br>Elements of δa which appear in artefact set out of place (i.e. without the whole of δa)</td>
+    </tr>
+    <tr>
+        <td>Visible incomplete artefact counterfeiting (VIAC)</td>
+        <td>Elements of δt in the artefact set<br>OR<br>Elements of δa occur in implausible locations<br>OR
+            <br>Elements of δa not correctly formed<br>OR<br>Not all elements of δa are present in the artefact set</td>
+        <td>Elements of δt<br>OR<br>How system should behave when δa is plausible<br>OR<br>Whether artefacts are
+            constructed correctly in the artefact set<br>OR<br>Elements of δa which appear in artefact set out of place (i.e. without the whole of δa)</td>
+    </tr>
+</table>
+<p>
+    This is summarised into the following knowledge codes for identifying tampering, shown in the next table and
+    illustrated in the various images
+</p>
+<table>
+    <tr>
+        <th>Identifying attacks (AT)</th>
+        <th>Identifying abnormality (AB)</th>
+    </tr>
+    <tr>
+        <td>AT-1: Elements of δt </td>
+        <td>AB-1: Elements of δa which appear in artefact set out of place (i.e. without the whole of δa)</td>
+    </tr>
+    <tr>
+        <td>AT-2: How 𝛳 behaves such that the investigator can distinguish whether 𝛳 has likely been applied to the artefact set</td>
+        <td>AB-2: Whether |𝘈s̅ | is within expected bounds for a given execution</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>AB-3: Whether artefacts are constructed correctly in the artefact set</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>AB-4: How system should behave when δa is plausible</td>
+    </tr>
+</table>
+<hr/>
+<img src="/static/img/Slide1.jpeg"/>
+<hr/>
+<img src="/static/img/Slide2.jpeg"/><hr/>
+<img src="/static/img/Slide3.jpeg"/><hr/>
+<img src="/static/img/Slide4.jpeg"/><hr/>
+<img src="/static/img/Slide5.jpeg"/><hr/>
+<img src="/static/img/Slide6.jpeg"/><hr/>
+<img src="/static/img/Slide7.jpeg"/>
 {% endblock %}
