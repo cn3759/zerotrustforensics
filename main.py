@@ -68,6 +68,7 @@ def feature(feature_id):
     return render_template('display_feature.html', feature=feature)
 
 if __name__==("__main__"):
-    app.run(ssl_context=('certs/cert.pem', 'certs/privkey.pem'))
-    #app.run(host='0.0.0.0', port='443', ssl_context=('certs/cert.pem', 'certs/privkey.pem                                                                   '))
+    #app.run(ssl_context=('certs/cert.pem', 'certs/privkey.pem'))
+    #app.run(host='0.0.0.0', port='443', ssl_context=('certs/cert.pem', 'certs/privkey.pem'))
+    app.run(host='0.0.0.0', port='80')
     #app.run()
