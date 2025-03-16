@@ -15,92 +15,119 @@ Tampering
 <p>
     The first of these is a table which outlines two things for the 14 types of tampering we identify and define in our
     model. First, it shows the difference in a system execution between if the tampering occurs and if it doesn't.
-    Seocndly, it shows the knowledge an investigator would need regarding that system in order to detect this.
+    Secondly, it shows the knowledge an investigator would need regarding that system in order to detect this.
 </p>
 <table>
     <tr>
         <th>Type of tampering action <em>t</em></th>
         <th>Difference between 𝜛 and 𝜛'</th>
-        <th>Knowledge required</th>
+        <th>Knowledge Required</th>
+        <th>Real-world explanation</th>
     </tr>
     <tr>
         <td>Invisible complete artefact destruction (ICAD)</td>
         <td>None</td>
         <td>N/A</td>
+        <td>N/A</td>
     </tr>
     <tr>
         <td>Visible complete artefact destruction (VCAD)</td>
-        <td>Elements of δt in the artefact set</td>
-        <td>Elements of δt</td>
+        <td>Elements of δT in the artefact set</td>
+        <td>Elements of δT</td>
+        <td>The tampering action itself leaves a trace</td>
     </tr>
     <tr>
         <td>Invisible incomplete artefact destruction (IIAD)</td>
-        <td>Elements of δa in artefact set</td>
-        <td>Elements of δa which appear in artefact set out of place (i.e. without the whole of δa)</td>
+        <td>Elements of δX in artefact set</td>
+        <td>Elements of δX which appear in artefact set out of place (i.e. without the whole of δX)</td>
+        <td>Some action can be inferred but only some of the expected traces can be found</td>
     </tr>
     <tr>
         <td>Visible incomplete artefact destruction (VIAD)</td>
-        <td>Elements of δt in the artefact set<br>OR<br>Elements of δa in artefact set</td>
-        <td>Elements of δt <br>OR<br>Elements of δa which appear in artefact set out of place (i.e. without the whole of δa)</td>
+        <td>Elements of δT in the artefact set<br>OR<br>Elements of δX in artefact set</td>
+        <td>Elements of δT <br>OR<br>Elements of δX which appear in artefact set out of place (i.e. without the whole
+            of δX)</td>
+        <td>The tampering action itself leaves a trace <br>OR<br>Some action can be inferred but only some of the expected
+            traces can be found</td>
     </tr>
     <tr>
         <td>Invisible complete artefact source elimination (ICASE)</td>
         <td>𝘈s̅ |𝜛 > |𝘈s̅ |𝜛'</td>
         <td>Whether |𝘈s̅ | is within expected bounds for a given execution</td>
+        <td>Less artefacts are present than would be expected</td>
     </tr>
     <tr>
         <td>Visible complete artefact source elimination (VCASE)</td>
-        <td>Elements of δt in the artefact set<br>OR<br>𝘈s̅ |𝜛 > |𝘈s̅ |𝜛'</td>
-        <td>Elements of δt <br>OR<br>Whether |𝘈s̅ | is within expected bounds for a given execution</td>
+        <td>Elements of δT in the artefact set<br>OR<br>𝘈s̅ |𝜛 > |𝘈s̅ |𝜛'</td>
+        <td>Elements of δT <br>OR<br>Whether |𝘈s̅ | is within expected bounds for a given execution</td>
+        <td>The tampering action itself leaves a trace <br>OR<br>Less artefacts are present than would be expected</td>
     </tr>
     <tr>
         <td>Invisible incomplete artefact source elimination (IIASE)</td>
-        <td>Elements of δa in the artefact set<br>OR<br>𝘈s̅ |𝜛 > |𝘈s̅ |𝜛'</td>
-        <td>Elements of δa , especially those which occur out of place (i.e. without the whole of δa)
+        <td>Elements of δX in the artefact set<br>OR<br>𝘈s̅ |𝜛 > |𝘈s̅ |𝜛'</td>
+        <td>Elements of δX , especially those which occur out of place (i.e. without the whole of δX)
  <br>OR<br>Whether |𝘈s̅ | is within expected bounds for a given execution</td>
+        <td>Some action can be inferred but only some of the expected traces can be found <br>OR<br>Less artefacts are present than would be expected</td>
     </tr>
     <tr>
         <td>Visible incomplete artefact source elimination (VIASE)</td>
-        <td>Elements of δt in the artefact set<br>OR<br>𝘈Elements of δa in the artefact set<br>OR<br>𝘈s̅ |𝜛 > |𝘈s̅ |𝜛'</td>
-        <td>Elements of δt<br>OR<br>Elements of δa , especially those which occur out of place (i.e. without the
-            whole of δa)
+        <td>Elements of δT in the artefact set<br>OR<br>Elements of δX in the artefact set<br>OR<br>𝘈s̅ |𝜛 > |𝘈s̅
+            |𝜛'</td>
+        <td>Elements of δT<br>OR<br>Elements of δX , especially those which occur out of place (i.e. without the
+            whole of δX)
  <br>OR<br>Whether |𝘈s̅ | is within expected bounds for a given execution</td>
+        <td>The tampering action itself leaves a trace <br>OR<br>Some action can be inferred but only some of the expected traces can be found <br>OR<br>Less artefacts are present than would be expected</td>
     </tr>
     <tr>
         <td>Artefact hiding (AH)</td>
         <td>Artefact set has been transformed by 𝛳</td>
         <td>How 𝛳 behaves such that the investigator can distinguish whether 𝛳 has likely been applied to the artefact set<br>OR<br>Whether artefacts are constructed correctly in the artefact set</td>
+        <td>A known obfuscation behaviour such as encryption can be found to be have occurred</td>
     </tr>
     <tr>
         <td>Artefact corruption (AC)</td>
         <td>Artefact set has been transformed by 𝛳 and as a result, one or more elements of the artefact are not properly constructed</td>
         <td>How 𝛳 behaves such that the investigator can distinguish whether 𝛳 has likely been applied to the artefact set<br>OR<br>Whether artefacts are constructed correctly in the artefact set</td>
+        <td>A known obfuscation behaviour such as encryption can be found to be have occurred <br>OR<br>Artefacts
+            have a form that indicates they were not created as part of normal operation</td>
     </tr>
     <tr>
         <td>Invisible complete artefact counterfeiting (ICAC)</td>
-        <td>Elements of δa occur in implausible locations<br>OR<br>Elements of δa not correctly formed</td>
-        <td>How system should behave when δa is plausible<br>OR<br>Whether artefacts are constructed correctly in the artefact set</td>
+        <td>Elements of δX occur in implausible locations<br>OR<br>Elements of δX not correctly formed</td>
+        <td>How system should behave when δX is plausible<br>OR<br>Whether artefacts are constructed correctly in the
+            artefact set</td>
+        <td>The context around an action does not make logical sense or fit with normal parameters <br>OR<br>Artefacts
+            have a form that indicates they were not created as part of normal operation</td>
     </tr>
     <tr>
         <td>Visible complete artefact counterfeiting (VCAC)</td>
-        <td>Elements of δt in the artefact set<br>OR<br>Elements of δa occur in implausible locations<br>OR
-            <br>Elements of δa not correctly formed</td>
-        <td>Elements of δt<br>OR<br>How system should behave when δa is plausible<br>OR<br>Whether artefacts are
+        <td>Elements of δT in the artefact set<br>OR<br>Elements of δX occur in implausible locations<br>OR
+            <br>Elements of δX not correctly formed</td>
+        <td>Elements of δT<br>OR<br>How system should behave when δX is plausible<br>OR<br>Whether artefacts are
             constructed correctly in the artefact set</td>
+        <td>The tampering action itself leaves a trace <br>OR<br>The context around an action does not make logical
+            sense or fit with normal parameters <br>OR<br>Artefacts
+            have a form that indicates they were not created as part of normal operation</td>
     </tr>
     <tr>
         <td>Invisible incomplete artefact counterfeiting (IIAC)</td>
-        <td>Elements of δa occur in implausible locations<br>OR
-            <br>Elements of δa not correctly formed<br>OR<br>Not all elements of δa are present in the artefact set</td>
-        <td>How system should behave when δa is plausible<br>OR<br>Whether artefacts are
-            constructed correctly in the artefact set<br>OR<br>Elements of δa which appear in artefact set out of place (i.e. without the whole of δa)</td>
+        <td>Elements of δX occur in implausible locations<br>OR
+            <br>Elements of δX not correctly formed<br>OR<br>Not all elements of δa are present in the artefact set</td>
+        <td>How system should behave when δX is plausible<br>OR<br>Whether artefacts are
+            constructed correctly in the artefact set<br>OR<br>Elements of δX which appear in artefact set out of
+            place (i.e. without the whole of δX)</td>
+        <td>The context around an action does not make logical sense or fit with normal parameters <br>OR<br>Artefacts
+            have a form that indicates they were not created as part of normal operation <br>OR<br>Some action can be inferred but only some of the expected traces can be found</td>
     </tr>
     <tr>
         <td>Visible incomplete artefact counterfeiting (VIAC)</td>
-        <td>Elements of δt in the artefact set<br>OR<br>Elements of δa occur in implausible locations<br>OR
-            <br>Elements of δa not correctly formed<br>OR<br>Not all elements of δa are present in the artefact set</td>
-        <td>Elements of δt<br>OR<br>How system should behave when δa is plausible<br>OR<br>Whether artefacts are
-            constructed correctly in the artefact set<br>OR<br>Elements of δa which appear in artefact set out of place (i.e. without the whole of δa)</td>
+        <td>Elements of δT in the artefact set<br>OR<br>Elements of δX occur in implausible locations<br>OR
+            <br>Elements of δX not correctly formed<br>OR<br>Not all elements of δX are present in the artefact set</td>
+        <td>Elements of δT<br>OR<br>How system should behave when δX is plausible<br>OR<br>Whether artefacts are
+            constructed correctly in the artefact set<br>OR<br>Elements of δX which appear in artefact set out of
+            place (i.e. without the whole of δX)</td>
+        <td>The tampering action itself leaves a trace <br>OR<br>The context around an action does not make logical sense or fit with normal parameters <br>OR<br>Artefacts
+            have a form that indicates they were not created as part of normal operation <br>OR<br>Some action can be inferred but only some of the expected traces can be found</td>
     </tr>
 </table>
 <p>
@@ -113,8 +140,8 @@ Tampering
         <th>Identifying abnormality (AB)</th>
     </tr>
     <tr>
-        <td>AT-1: Elements of δt </td>
-        <td>AB-1: Elements of δa which appear in artefact set out of place (i.e. without the whole of δa)</td>
+        <td>AT-1: Elements of δT </td>
+        <td>AB-1: Elements of δX which appear in artefact set out of place (i.e. without the whole of δX)</td>
     </tr>
     <tr>
         <td>AT-2: How 𝛳 behaves such that the investigator can distinguish whether 𝛳 has likely been applied to the artefact set</td>
@@ -126,16 +153,16 @@ Tampering
     </tr>
     <tr>
         <td></td>
-        <td>AB-4: How system should behave when δa is plausible</td>
+        <td>AB-4: How system should behave when δX is plausible</td>
     </tr>
 </table>
 <hr/>
-<img src="/static/img/Slide1.png"/>
+<img src="/static/img/Model.png"/>
 <hr/>
-<img src="/static/img/Slide2.png"/><hr/>
-<img src="/static/img/Slide3.png"/><hr/>
-<img src="/static/img/Slide4.png"/><hr/>
-<img src="/static/img/Slide5.png"/><hr/>
-<img src="/static/img/Slide6.png"/><hr/>
-<img src="/static/img/Slide7.png"/>
+<img src="/static/img/AT-1.png"/><hr/>
+<img src="/static/img/AT-2.png"/><hr/>
+<img src="/static/img/AB-1.png"/><hr/>
+<img src="/static/img/AB-2.png"/><hr/>
+<img src="/static/img/AB-3.png"/><hr/>
+<img src="/static/img/AB-4.png"/>
 {% endblock %}
