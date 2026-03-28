@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Zero Trust Forensics</title>
+        <link rel="icon" type="image/x-icon" href="static/img/favicon.ico">
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="static/css/styles.css" rel="stylesheet" />
+        <!-- Custom overrides -->
+        <link href="static/css/custom.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">Zero Trust Forensics</a>
+                <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="papers.html">Published Work</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="tampering.html">Tampering</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead bg-primary text-white text-center">
+            <div class="container d-flex align-items-center flex-column">
+                <!-- Masthead Avatar Image-->
+                <img class="masthead-avatar mb-5" src="static/img/puzzle.jpeg" alt="..." />
+                <!-- Masthead Heading-->
+                <h1 class="masthead-heading text-uppercase mb-0">Tampering</h1>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Masthead Subheading-->
+                <p class="masthead-subheading font-weight-light mb-0">Chris Neale PhD Project</p>
+            </div>
+        </header>
+        <!-- Portfolio Section-->
+        <section class="page-section portfolio" id="portfolio">
+            <div class="container">
+                <p class="lead mb-4">
+                    We are currently in the process of submitting a paper which describes a means by which tampering can be modelled
+                    as an action. If and when this work is published, we will provide a link here. We don't attempt to try and
+                    provide a comprehensive overview of it in this format, you need to read the paper when it is eventually
+                    available. However, there is some information which is often too verbose to include in such publications which
+                    have space limitations and so we provide a reference resource below.
+                </p>
+                <p class="mb-4">
+                    The first of these is a table which outlines two things for the 14 types of tampering we identify and define in our
+                    model. First, it shows the difference in a system execution between if the tampering occurs and if it doesn't.
+                    Secondly, it shows the knowledge an investigator would need regarding that system in order to detect this.
+                </p>
+
+                <div class="table-responsive mb-5">
+                    <table class="table table-bordered table-hover tampering-table">
+                        <thead>
+                            <tr>
+                                <th>Type of tampering action <em>t</em></th>
+                                <th>Difference between 𝜛 and 𝜛'</th>
+                                <th>Knowledge Required</th>
+                                <th>Real-world explanation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Invisible complete artefact destruction (ICAD)</td>
+                                <td>None</td>
+                                <td>N/A</td>
+                                <td>N/A</td>
+                            </tr>
+                            <tr>
+                                <td>Visible complete artefact destruction (VCAD)</td>
+                                <td>Elements of δT in the artefact set</td>
+                                <td>Elements of δT</td>
+                                <td>The tampering action itself leaves a trace</td>
+                            </tr>
+                            <tr>
+                                <td>Invisible incomplete artefact destruction (IIAD)</td>
+                                <td>Elements of δX in artefact set</td>
+                                <td>Elements of δX which appear in artefact set out of place (i.e. without the whole of δX)</td>
+                                <td>Some action can be inferred but only some of the expected traces can be found</td>
+                            </tr>
+                            <tr>
+                                <td>Visible incomplete artefact destruction (VIAD)</td>
+                                <td>Elements of δT in the artefact set<br>OR<br>Elements of δX in artefact set</td>
+                                <td>Elements of δT <br>OR<br>Elements of δX which appear in artefact set out of place (i.e. without the whole of δX)</td>
+                                <td>The tampering action itself leaves a trace <br>OR<br>Some action can be inferred but only some of the expected traces can be found</td>
+                            </tr>
+                            <tr>
+                                <td>Invisible complete artefact source elimination (ICASE)</td>
+                                <td>𝘈s̅ |𝜛 > |𝘈s̅ |𝜛'</td>
+                                <td>Whether |𝘈s̅ | is within expected bounds for a given execution</td>
+                                <td>Less artefacts are present than would be expected</td>
+                            </tr>
+                            <tr>
+                                <td>Visible complete artefact source elimination (VCASE)</td>
+                                <td>Elements of δT in the artefact set<br>OR<br>𝘈s̅ |𝜛 > |𝘈s̅ |𝜛'</td>
+                                <td>Elements of δT <br>OR<br>Whether |𝘈s̅ | is within expected bounds for a given execution</td>
+                                <td>The tampering action itself leaves a trace <br>OR<br>Less artefacts are present than would be expected</td>
+                            </tr>
+                            <tr>
+                                <td>Invisible incomplete artefact source elimination (IIASE)</td>
+                                <td>Elements of δX in the artefact set<br>OR<br>𝘈s̅ |𝜛 > |𝘈s̅ |𝜛'</td>
+                                <td>Elements of δX, especially those which occur out of place (i.e. without the whole of δX)
+                                    <br>OR<br>Whether |𝘈s̅ | is within expected bounds for a given execution</td>
+                                <td>Some action can be inferred but only some of the expected traces can be found <br>OR<br>Less artefacts are present than would be expected</td>
+                            </tr>
+                            <tr>
+                                <td>Visible incomplete artefact source elimination (VIASE)</td>
+                                <td>Elements of δT in the artefact set<br>OR<br>Elements of δX in the artefact set<br>OR<br>𝘈s̅ |𝜛 > |𝘈s̅ |𝜛'</td>
+                                <td>Elements of δT<br>OR<br>Elements of δX, especially those which occur out of place (i.e. without the whole of δX)
+                                    <br>OR<br>Whether |𝘈s̅ | is within expected bounds for a given execution</td>
+                                <td>The tampering action itself leaves a trace <br>OR<br>Some action can be inferred but only some of the expected traces can be found <br>OR<br>Less artefacts are present than would be expected</td>
+                            </tr>
+                            <tr>
+                                <td>Artefact hiding (AH)</td>
+                                <td>Artefact set has been transformed by 𝛳</td>
+                                <td>How 𝛳 behaves such that the investigator can distinguish whether 𝛳 has likely been applied to the artefact set<br>OR<br>Whether artefacts are constructed correctly in the artefact set</td>
+                                <td>A known obfuscation behaviour such as encryption can be found to have occurred</td>
+                            </tr>
+                            <tr>
+                                <td>Artefact corruption (AC)</td>
+                                <td>Artefact set has been transformed by 𝛳 and as a result, one or more elements of the artefact are not properly constructed</td>
+                                <td>How 𝛳 behaves such that the investigator can distinguish whether 𝛳 has likely been applied to the artefact set<br>OR<br>Whether artefacts are constructed correctly in the artefact set</td>
+                                <td>A known obfuscation behaviour such as encryption can be found to have occurred <br>OR<br>Artefacts have a form that indicates they were not created as part of normal operation</td>
+                            </tr>
+                            <tr>
+                                <td>Invisible complete artefact counterfeiting (ICAC)</td>
+                                <td>Elements of δX occur in implausible locations<br>OR<br>Elements of δX not correctly formed</td>
+                                <td>How system should behave when δX is plausible<br>OR<br>Whether artefacts are constructed correctly in the artefact set</td>
+                                <td>The context around an action does not make logical sense or fit with normal parameters <br>OR<br>Artefacts have a form that indicates they were not created as part of normal operation</td>
+                            </tr>
+                            <tr>
+                                <td>Visible complete artefact counterfeiting (VCAC)</td>
+                                <td>Elements of δT in the artefact set<br>OR<br>Elements of δX occur in implausible locations<br>OR<br>Elements of δX not correctly formed</td>
+                                <td>Elements of δT<br>OR<br>How system should behave when δX is plausible<br>OR<br>Whether artefacts are constructed correctly in the artefact set</td>
+                                <td>The tampering action itself leaves a trace <br>OR<br>The context around an action does not make logical sense or fit with normal parameters <br>OR<br>Artefacts have a form that indicates they were not created as part of normal operation</td>
+                            </tr>
+                            <tr>
+                                <td>Invisible incomplete artefact counterfeiting (IIAC)</td>
+                                <td>Elements of δX occur in implausible locations<br>OR<br>Elements of δX not correctly formed<br>OR<br>Not all elements of δa are present in the artefact set</td>
+                                <td>How system should behave when δX is plausible<br>OR<br>Whether artefacts are constructed correctly in the artefact set<br>OR<br>Elements of δX which appear in artefact set out of place (i.e. without the whole of δX)</td>
+                                <td>The context around an action does not make logical sense or fit with normal parameters <br>OR<br>Artefacts have a form that indicates they were not created as part of normal operation <br>OR<br>Some action can be inferred but only some of the expected traces can be found</td>
+                            </tr>
+                            <tr>
+                                <td>Visible incomplete artefact counterfeiting (VIAC)</td>
+                                <td>Elements of δT in the artefact set<br>OR<br>Elements of δX occur in implausible locations<br>OR<br>Elements of δX not correctly formed<br>OR<br>Not all elements of δX are present in the artefact set</td>
+                                <td>Elements of δT<br>OR<br>How system should behave when δX is plausible<br>OR<br>Whether artefacts are constructed correctly in the artefact set<br>OR<br>Elements of δX which appear in artefact set out of place (i.e. without the whole of δX)</td>
+                                <td>The tampering action itself leaves a trace <br>OR<br>The context around an action does not make logical sense or fit with normal parameters <br>OR<br>Artefacts have a form that indicates they were not created as part of normal operation <br>OR<br>Some action can be inferred but only some of the expected traces can be found</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="mb-4">
+                    This is summarised into the following knowledge codes for identifying tampering, shown in the next table and
+                    illustrated in the various images below.
+                </p>
+
+                <div class="table-responsive mb-5">
+                    <table class="table table-bordered tampering-table">
+                        <thead>
+                            <tr>
+                                <th><span class="knowledge-badge at">AT</span> Identifying attacks</th>
+                                <th><span class="knowledge-badge ab">AB</span> Identifying abnormality</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="knowledge-badge at">AT-1</span> Elements of δT</td>
+                                <td><span class="knowledge-badge ab">AB-1</span> Elements of δX which appear in artefact set out of place (i.e. without the whole of δX)</td>
+                            </tr>
+                            <tr>
+                                <td><span class="knowledge-badge at">AT-2</span> How 𝛳 behaves such that the investigator can distinguish whether 𝛳 has likely been applied to the artefact set</td>
+                                <td><span class="knowledge-badge ab">AB-2</span> Whether |𝘈s̅ | is within expected bounds for a given execution</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><span class="knowledge-badge ab">AB-3</span> Whether artefacts are constructed correctly in the artefact set</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><span class="knowledge-badge ab">AB-4</span> How system should behave when δX is plausible</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <hr class="my-5"/>
+
+                <div class="model-gallery">
+                    <!-- Full-width model overview -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <figure>
+                                <img src="static/img/Model.png" alt="Tampering Detection Model Overview"/>
+                                <figcaption>Tampering Detection Model — Overview</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <!-- AT codes -->
+                    <div class="row mb-4">
+                        <div class="col-md-6 gallery-item">
+                            <figure>
+                                <img src="static/img/AT-1.png" alt="AT-1: Elements of δT"/>
+                                <figcaption>AT-1 — Elements of δT</figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-md-6 gallery-item">
+                            <figure>
+                                <img src="static/img/AT-2.png" alt="AT-2: Obfuscation behaviour θ"/>
+                                <figcaption>AT-2 — Obfuscation behaviour θ</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <!-- AB codes -->
+                    <div class="row">
+                        <div class="col-md-6 gallery-item">
+                            <figure>
+                                <img src="static/img/AB-1.png" alt="AB-1: Incomplete expected traces δX"/>
+                                <figcaption>AB-1 — Incomplete expected traces δX</figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-md-6 gallery-item">
+                            <figure>
+                                <img src="static/img/AB-2.png" alt="AB-2: Expected artefact count bounds"/>
+                                <figcaption>AB-2 — Expected artefact count bounds</figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-md-6 gallery-item mt-4">
+                            <figure>
+                                <img src="static/img/AB-3.png" alt="AB-3: Correct artefact construction"/>
+                                <figcaption>AB-3 — Correct artefact construction</figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-md-6 gallery-item mt-4">
+                            <figure>
+                                <img src="static/img/AB-4.png" alt="AB-4: Plausible system behaviour δX"/>
+                                <figcaption>AB-4 — Plausible system behaviour δX</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer-->
+        <footer class="footer text-center">
+            <div class="container">
+                <div class="row">
+                    <!-- Footer About Text-->
+                    <div class="col-lg-4">
+                        <h4 class="text-uppercase mb-4">About this project</h4>
+                            <img class="background-image" src="static/img/OU.png"/>
+                            <div class="divider-custom divider-light">
+                                <div class="divider-custom-line"></div>
+                            </div>
+                        <p class="lead mb-0">
+                        Chris Neale is a PhD student at the Open University studying methods to detect the tampering
+                            of digital artefacts
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Copyright Section-->
+        <div class="copyright py-4 text-center text-white">
+            <div class="container"><small>Copyright &copy; Chris Neale <span id="copyright-year"></span><script>document.getElementById('copyright-year').textContent=new Date().getFullYear();</script></small></div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>
